@@ -40,3 +40,7 @@ if settings.DEBUG and settings.MEDIA_ROOT:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns += [
+    url(r'^styles/', include('vector_style.urls'))
+]
