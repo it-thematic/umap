@@ -12,6 +12,7 @@ except ImportError:
     from urlparse import urlparse
     from urllib2 import Request, HTTPError, build_opener
 
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.views.generic import DetailView, View
@@ -57,7 +58,7 @@ class PaginatorMixin(object):
 
 
 class Home(TemplateView, PaginatorMixin):
-    template_name = "umap/home.html"
+    template_name = "main.html"
     list_template_name = "leaflet_storage/map_list.html"
 
     def get_context_data(self, **kwargs):
@@ -102,6 +103,13 @@ class Home(TemplateView, PaginatorMixin):
             return [self.template_name]
 
 home = Home.as_view()
+
+
+# def home(request, ):
+#     if request.user.is_authenticated():
+#         return redirect("login")
+#     else:
+#         return HttpResponse("main.html", )
 
 
 class About(Home):

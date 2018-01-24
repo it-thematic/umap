@@ -5,9 +5,9 @@
 from django.conf.global_settings import *   # pylint: disable=W0614,W0401
 from django.template.defaultfilters import slugify
 
-#==============================================================================
-# Generic Django project settings
-#==============================================================================
+#  ==============================================================================
+#  Generic Django project settings
+#  ==============================================================================
 
 DEBUG = True
 
@@ -60,6 +60,7 @@ INSTALLED_APPS = (
     'umap',
     'compressor',
     'social_django',
+    'vector_style'
 )
 
 # =============================================================================
@@ -168,12 +169,6 @@ MAP_SHORT_URL_NAME = "umap_short_url"
 UMAP_USE_UNACCENT = False
 UMAP_FEEDBACK_LINK = "https://wiki.openstreetmap.org/wiki/UMap#Feedback_and_help"  # noqa
 USER_MAPS_URL = 'user_maps'
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'umap',
-    }
-}
 
 # =============================================================================
 # Third party app settings
@@ -183,7 +178,6 @@ COMPRESS_OFFLINE = True
 
 SOCIAL_AUTH_DEFAULT_USERNAME = lambda u: slugify(u)
 SOCIAL_AUTH_ASSOCIATE_BY_EMAIL = True
-LOGIN_URL = "login"
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/login/popup/end/"
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
